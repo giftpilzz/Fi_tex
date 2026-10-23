@@ -1,16 +1,37 @@
-\documentclass[14pt,a4paper,landscape]{article}
-\usepackage[english, russian]{babel}
+\documentclass[14pt,a4paper,landscape]{extarticle}
+
+% --- Поддержка шрифтов и языков (универсально для pdfLaTeX, XeLaTeX, LuaLaTeX) ---
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[english,russian]{babel}
+\else
+  \usepackage{fontspec}
+  \usepackage{polyglossia}
+  \setmainlanguage{russian}
+  \setotherlanguage{english}
+  \setmainfont{DejaVu Serif}
+  \newfontfamily\cyrillicfont{DejaVu Serif}
+\fi
+
+% --- Геометрия страницы ---
 \usepackage[landscape,left=1cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
+
+% --- Математика и оформление ---
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{parskip}
 \usepackage{multicol}
 
+% --- Пользовательские макросы ---
 \newcommand{\fr}{\frac}
 \newcommand{\pd}{\partial}
 \newcommand{\limm}{\lim\limits}
 \newcommand{\vect}{\overline}
+
+% --- Окружения и теоремы ---
 \newenvironment{Proof}
 		{$\scriptstyle\square$}
 		{$\scriptstyle\blacksquare$}
@@ -18,6 +39,17 @@
 \newtheorem{Th}{Теорема}
 \newtheorem{Def}{Определение}
 \newtheorem{Ax}{Аксиома}
+
+% --- Дополнительные операторы и команды ---
+\DeclareMathOperator{\arctg}{arctg}
+\newcommand{\sol}{\par\noindent\textbf{Решение.}\;}
+% \newcommand{\ans}[2]{\par\noindent\textbf{#1.}\;\ensuremath{#2}\par} % закомментировано, так как мы перешли на автоматическую нумерацию
+
+% --- Глобальные настройки верстки (против наслаивания) ---
+\setlength{\parskip}{2pt}          % Отступ между абзацами
+\setlength{\emergencystretch}{1em} % Разрешает растягивать строки при нехватке места
+\setlength{\abovedisplayskip}{4pt} % Отступ перед выключными формулами
+\setlength{\belowdisplayskip}{4pt} % Отступ после выключных формул
 
 \begin{document}
 \fontsize{10}{13pt}\selectfont
